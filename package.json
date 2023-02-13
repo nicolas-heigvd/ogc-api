@@ -1,0 +1,22 @@
+{
+  "name": "ogc-api",
+  "version": "1.0.0",
+  "description": "Node.js implementation of the OGC API Features",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "author": "Maxime Collombin <maxime.collombin@heig-vd.ch>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "@scaleleap/pg-format": "^1.0.0",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "express-openapi": "^12.1.0",
+    "js-yaml": "^4.1.0",
+    "pg": "^8.9.0"
+  }
+}

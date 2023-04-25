@@ -55,7 +55,7 @@ router.get('/:collectionId/items/:id', async (req, res) => {
 
   pool.query(query, (err, result) => {
     if (err) {
-      return res.status(500).json({ error: "Error retrieving items" });
+      return res.status(500).json({ error: `Error retrieving items: ${err}` });
     } else {
       let currentItemID = result.rows[result.rows.length-1].id + (offset || 0);
       let nextItemID = currentItemID + (limit || 1);

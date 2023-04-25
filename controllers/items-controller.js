@@ -89,14 +89,13 @@ router.get('/:collectionId/items', (req, res) => {
 
     query += pgFormat.format(' LIMIT %L OFFSET %L', limit || 10, offset || 0);
 
-    // Execute the query
-    
+    // Execute the query 
     console.log(filter)
     console.log(query)
     pool.query(query, (err, result) => {
         if (err) {
             res.status(500).json({
-                error: "Error retrieving items"
+                error: `Error retrieving items: ${err}`
             })
         } else {
             res.json({

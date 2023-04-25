@@ -14,7 +14,7 @@ try {
   console.log(error);
 }
 
-router.get('/', (req, res) => {
+router.get('/collections', (req, res) => {
   let collections = config.resources;
   let result = {collections: {}}
   let index = 0;

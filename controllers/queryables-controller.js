@@ -43,7 +43,7 @@ router.get('/:collectionId/queryables', (req, res) => {
   }
   pool.query(query, (err, result) => {
     if (err) {
-      res.status(500).json({ error: "Error retrieving queryables" })
+      res.status(500).json({ error: `Error retrieving queryables: ${err}` })
     } else {
       res.json({
         queryables: result.rows.map(row => {

@@ -16,7 +16,7 @@ DB_PASSWORD='<user_password>'
 
 ## Step #2
 
-Update the content of the `config.yml` file with the with the informations you want to display for each collection
+Create a `config.yml` file with the informations you want to display for each collection. You can take example on `config.example.yml`.
 
 ## Step #3
 

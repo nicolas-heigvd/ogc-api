@@ -36,7 +36,7 @@ __Note:__ For development purposes, you can use `nodemon` to automatically resta
 
 ## Step 5
 
-If you want to have geopose information, add the entries `is_azimuth`, `yaw_field`, `roll_field` and `pitch_field` to your configuration file, as in the following example:
+If you want to have geopose information, add the entries `is_azimuth` (in case you have an azimuth instead of a yaw, the boolean must be `true`. In this case, we convert your azimuth to yaw), `yaw_field`, `roll_field` and `pitch_field` to your configuration file, as in the following example:
 ```
     providers:
       - type: feature

@@ -16,6 +16,22 @@ try {
     console.log(error);
 }
 
+const composeGeopose = (row, config) => {
+    const coordinate = JSON.parse(row['geojson']).coordinates
+    return {
+        "position": {
+            "lon": coordinate[0],
+            "lat": coordinate[1],
+            "h": coordinate[2]
+        },
+        "angles": {
+            "yaw": config.data.is_azimuth ? -(row[config.data.yaw_field] % 360) : row[config.data.yaw_field],
+            "pitch": row[config.data.pitch_field],
+            "roll": row[config.data.roll_field]
+          }
+    }
+}
+
 // Connect to the database
 
 const pool = new Pool({
@@ -102,6 +118,9 @@ router.get('/:collectionId/items', (req, res) => {
                 type: 'FeatureCollection',
                 features: result.rows.map(row => {
                     let geojson;
+                    if (collection.providers[0].data.yaw_field) {
+                        row['geopose'] = composeGeopose(row, collection.providers[0]);
+                    }
                     if (skipGeometry === undefined || skipGeometry === 'false') {
                         geojson = JSON.parse(row.geojson);
                     }

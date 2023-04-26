@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {Pool} = require('pg')
+const {Pool} = require('pg');
 require('dotenv').config();
 const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
 const pgFormat = require('@scaleleap/pg-format');
-const convert = require('../utils/convert.js')
+const convert = require('../utils/convert.js');
 
 // Load the configuration file
 

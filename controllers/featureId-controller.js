@@ -79,8 +79,8 @@ router.get('/:collectionId/items/:id', async (req, res) => {
               obj[key] = row[key];
               return obj;
             }, {}),
-        id: row.id,
-        geometry : geojson
+            id: row.id,
+            geometry : geojson
           }
         }),
         links: [

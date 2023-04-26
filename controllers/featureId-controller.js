@@ -47,12 +47,12 @@ router.get('/:collectionId/items/:id', async (req, res) => {
   
   let select_columns = ''
   if(lang){
-    select_columns = `,name_${lang} as name`
+    select_columns = `,name_${lang} AS name`
   }
 
   // Execute the query
 
-  let query = format.format('SELECT ST_AsGeoJSON(ST_Transform(%I, %L)) as geojson, * FROM %I WHERE id = %L', geometry_column, crs || 4326, table_name, itemId);
+  let query = format.format('SELECT ST_AsGeoJSON(ST_Transform(%I, %L)) AS geojson, * FROM %I WHERE id = %L', geometry_column, crs || 4326, table_name, itemId);
 
   pool.query(query, (err, result) => {
     if (err) {

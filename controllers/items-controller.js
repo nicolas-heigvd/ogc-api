@@ -53,9 +53,9 @@ router.get('/:collectionId/items', (req, res) => {
       select_columns = `,name_${lang} as name`
     }
 
-    let query = pgFormat.format('SELECT ST_AsGeoJSON(ST_Transform(%I, %L)) as geojson, * FROM %I', geometry_column, crs || 4326, table_name);
+    let query = pgFormat.format('SELECT ST_AsGeoJSON(ST_Transform(%I, %L)) AS geojson, * FROM %I', geometry_column, crs || 4326, table_name);
     if (attributes) {
-      query = pgFormat.format('SELECT ST_AsGeoJSON(ST_Transform(%I, %L)) as geojson, %s FROM %I', geometry_column, crs || 4326, attributes.map(attr => `${attr}`).join(','), table_name);
+      query = pgFormat.format('SELECT ST_AsGeoJSON(ST_Transform(%I, %L)) AS geojson, %s FROM %I', geometry_column, crs || 4326, attributes.map(attr => `${attr}`).join(','), table_name);
     }    
     if (bbox) {
       const [minx, miny, maxx, maxy] = bbox.split(',').map(parseFloat);

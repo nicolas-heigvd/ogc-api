@@ -6,6 +6,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
 const format = require('@scaleleap/pg-format');
+const convert = require('../utils/convert.js')
 
 // Load the configuration file
 
@@ -65,6 +66,11 @@ router.get('/:collectionId/items/:id', async (req, res) => {
         features: result.rows.map(row => {
           let geojson;
           geojson = JSON.parse(row.geojson);
+          if (collection.providers[0].data.yaw_field) {
+            const geopose = convert(row, collection.providers[0]);
+            if (geopose)
+              row['geopose'] = geopose;
+          }
           return {
             type: 'Feature',
             properties: Object.keys(row)
